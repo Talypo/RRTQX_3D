@@ -34,7 +34,7 @@ function sim_RRTQX()
   total_time = 7.0       # total planning time (move after this, and keep planning)
   slice_time = 2.5/10.0       # for saving data
 
-  envRad = 20 # 50.0          # environment spans -envRad to envRad in each dimension
+  envRad = 15 # 50.0          # environment spans -envRad to envRad in each dimension
   robotRad = 0.5
   # robotSensorRange = 0.4
   #start = [8.9 -0.5 -13.0] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
@@ -45,22 +45,31 @@ function sim_RRTQX()
   #goal3 = [-1.0 -9.5 -13.5] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
   #start4 = [1.5 -9.0 -12.5] # 5*[0.0 -8.0 10.0]   # robot goes to here (start location of search tree) [15.0 -10.0 10.0]
   #goal4 = [-2.5 9.5 -12.5] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
-  start = [8.9 7.5 -13.0] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
-  goal = [-9.0 -7.5 -13.0] # 5*[0.0 -8.0 10.0]   # robot goes to here (start location of search tree) [15.0 -10.0]
-  start2 = [-10.5 -7.5 -13.0] # 5*[0.0 -8.0]   # robot goes to here (start location of search tree) [15.0 -10.0]
-  goal2 = [8.3 7.5 -13.0] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
-  start3 = [2.0 12.0 -13.5] # 5*[0.0 -8.0 10.0]   # robot goes to here (start location of search tree) [15.0 -10.0 10.0]
-  goal3 = [-1.0 -12.5 -13.5] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
-  start4 = [1.5 -12.0 -12.5] # 5*[0.0 -8.0 10.0]   # robot goes to here (start location of search tree) [15.0 -10.0 10.0]
-  goal4 = [-2.5 12.5 -12.5] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
+  #start = [8.9 7.5 -13.0] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
+  #goal = [-9.0 -7.5 -13.0] # 5*[0.0 -8.0 10.0]   # robot goes to here (start location of search tree) [15.0 -10.0]
+  #start2 = [-10.5 -7.5 -13.0] # 5*[0.0 -8.0]   # robot goes to here (start location of search tree) [15.0 -10.0]
+  #goal2 = [8.3 7.5 -13.0] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
+  #start3 = [2.0 12.0 -13.5] # 5*[0.0 -8.0 10.0]   # robot goes to here (start location of search tree) [15.0 -10.0 10.0]
+  #goal3 = [-1.0 -12.5 -13.5] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
+  #start4 = [1.5 -12.0 -12.5] # 5*[0.0 -8.0 10.0]   # robot goes to here (start location of search tree) [15.0 -10.0 10.0]
+  #goal4 = [-2.5 12.5 -12.5] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
+  start = [-8.9 7.5 -3.0] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
+  goal = [9.0 9.5 -3.0] # 5*[0.0 -8.0 10.0]   # robot goes to here (start location of search tree) [15.0 -10.0]
+  start2 = [10.5 7.5 -3.0] # 5*[0.0 -8.0]   # robot goes to here (start location of search tree) [15.0 -10.0]
+  goal2 = [-8.3 8.5 -3.0] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
+  start3 = [2.0 -8.0 -3.5] # 5*[0.0 -8.0 10.0]   # robot goes to here (start location of search tree) [15.0 -10.0 10.0]
+  goal3 = [-1.0 8.5 -3.5] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
+  start4 = [1.5 8.0 -2.5] # 5*[0.0 -8.0 10.0]   # robot goes to here (start location of search tree) [15.0 -10.0 10.0]
+  goal4 = [-2.5 -8.5 -2.5] # [-40.0 40.0 10.0]    # robot comes from here (goal location of search tree) [-18.0 18.0 10.0]
 
 
-  lvl1s = [2]
+
+  lvl1s = [1]
 
 
   # start = [0.0 -8.]
   # goal = [-7.0 7.]
-  obstacleFile = "environments/buildingsSmall.txt" # Dynamic_5: ACC 20; Static_5: small envir;
+  obstacleFile = "environments/empty.txt" # Dynamic_5: ACC 20; Static_5: small envir;
   # MUST ALSO BE CHANGED IN RRTQX.JL!!!!
   # obstacleFile = "environments/empty.txt"
   # success(`mkdir experiments/$(expName)`)
@@ -75,7 +84,7 @@ function sim_RRTQX()
  
   lowerBounds = -envRad*ones(1,d)
   upperBounds = envRad*ones(1,d)
-
+  for a = 1:3
   C = CSpace{Float64}(d, -1.0, lowerBounds, upperBounds, start, goal)
   C2 = CSpace{Float64}(d, -1.0, lowerBounds, upperBounds, start2, goal2)
   C3 = CSpace{Float64}(d, -1.0, lowerBounds, upperBounds, start3, goal3)
@@ -128,8 +137,12 @@ function sim_RRTQX()
   push!(T, C3)
   push!(T, C4)
   N = (size(T)[1])
-
-  multirrtqx(T, N, lvl1s, total_time, slice_time, 8.0, 80.0, changeThresh, algorithmName, MoveRobot, saveVideoData, obstacleFile, saveTree, dataFile)
+    try
+      multirrtqx(a, T, N, lvl1s, total_time, slice_time, 8.0, 80.0, changeThresh, algorithmName, MoveRobot, saveVideoData, obstacleFile, saveTree, dataFile)
+    catch e
+      println("Run failed, couldn't find a path")
+    end
+  end
   #for i = 1:30
   #  C.lastVelocity = [0.0; -1.0; 0.0]
   #  localTemp = sim_TNNLS_B_CT_Local_Max([0.0; 0.0; 0.0], [(i/3); (i/3); (i/3)], C.lastVelocity)

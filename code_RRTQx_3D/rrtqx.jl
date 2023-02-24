@@ -1,4 +1,4 @@
-function multirrtqx(S::Array{TS}, N::Int64, lvl1s::Array{Int64}, total_planning_time::Float64, slice_time::Float64,
+function multirrtqx(runNum::Int64, S::Array{TS}, N::Int64, lvl1s::Array{Int64}, total_planning_time::Float64, slice_time::Float64,
   delta::Float64, ballConstant::Float64, changeThresh::Float64,
   searchType::String, MoveRobotFlag::Bool, saveVideoData::Bool, obstacleFile::String,
   statsArgs...) where {TS}
@@ -996,8 +996,8 @@ function multirrtqx(S::Array{TS}, N::Int64, lvl1s::Array{Int64}, total_planning_
     saveMoveGoals(fullRealBVPData[i], "BVPData/FullRealBVPData_$(i).txt")
   end
   saveBVPs(allBVPs, "BVPData/BVPs.txt")
-  saveBVPs(BVPsWithRationality, "BVPData/BVPsWithRationality.txt")
-  saveBVPs(BVPsWithRationalityRatio, "BVPData/BVPsWithRationalityRatio.txt")
+  saveBVPs(BVPsWithRationality, "BVPData/BVPsWithRationality_$runNum.txt")
+  saveBVPs(BVPsWithRationalityRatio, "BVPData/BVPsWithRationalityRatio_$runNum.txt")
   #println(BVPEnds[1])
   #println(maxKDs)
   #println(level)
